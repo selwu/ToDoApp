@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import TodoTitle from './components/todo-title';
+import TodoInput from './components/todo-input';
+import TodoList from './components/todo-list';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const dataArr = [
+  {label: 'Hello!', important: true},
+  {label: 'My!', important: false},
+  {label: 'Name!', important: true},
+  {label: 'Is!', important: false},
+  {label: 'some!', important: true},
+];
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const App = () => {
+  return (
+    <div className="container">
+      <TodoTitle/>
+      <TodoInput/>
+      <TodoList dataArr={dataArr}/>
+    </div>
+  );
+};
+
+ReactDOM.render(<App/>, document.querySelector('#root'));
