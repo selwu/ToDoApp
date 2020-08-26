@@ -1,23 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoTitle from './components/todo-title';
-import TodoInput from './components/todo-input';
-import TodoList from './components/todo-list';
+import Title from './components/header';
+import Input from './components/input';
+import List from './components/list';
+import Filter from './components/filter';
+import './index.css';
+
 
 const dataArr = [
-  {label: 'Hello!', important: true},
-  {label: 'My!', important: false},
-  {label: 'Name!', important: true},
-  {label: 'Is!', important: false},
-  {label: 'some!', important: true},
+  {label: 'Hello!', important: true, id: 1},
+  {label: 'My!', important: false, id: 2},
+  {label: 'Name!', important: true, id: 3},
+  {label: 'Is!', important: false, id: 4},
+  {label: 'some!', important: true, id: 5},
 ];
 
 const App = () => {
   return (
-    <div className="container">
-      <TodoTitle/>
-      <TodoInput/>
-      <TodoList dataArr={dataArr}/>
+    <div className="todo-app">
+      <Title/>
+      <div className="todo-info d-flex">
+        <Input/>
+        <Filter/>
+      </div>
+      <List dataArr={dataArr}/>
     </div>
   );
 };
