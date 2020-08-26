@@ -11,6 +11,16 @@
 
 .todo-list-item {
   line-height: 36px;
+  cursor: pointer;
+}
+
+.itemDone {
+  text-decoration: line-through;
+}
+
+.itemImportant {
+  color: steelblue;
+  font-weight: bold;
 }
 
 .material-icons {
