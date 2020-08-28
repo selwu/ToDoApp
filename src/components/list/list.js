@@ -1,13 +1,15 @@
 import React from 'react';
-import Item from './item';
+import Item from '../item/item';
 import './list.css';
 
-export default ({dataArr}) => {
+const List = ({dataArr, onDeleted}) => {
   const add = dataArr.map((item) => {
     const {id, ...otherItems} = item;
     return (
-      <li className="list-group-item todo-list-item" key={id}>
-        <Item {...otherItems}/>
+      <li className="list-group-item" key={id}>
+        <Item
+          {...otherItems}
+          onDeleted={() => onDeleted(id)}/>
       </li>
     );
   });
@@ -19,3 +21,5 @@ export default ({dataArr}) => {
     </ul>
   );
 };
+
+export default List;

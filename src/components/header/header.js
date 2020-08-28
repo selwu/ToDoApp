@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.css';
 
-export default () => {
+const Header = () => {
   return (
     <header className="todo-header">
       <h1 className="title">My ToDo List</h1>
@@ -9,3 +9,5 @@ export default () => {
     </header>
   );
 };
+
+export default Header;
