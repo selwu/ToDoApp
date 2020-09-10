@@ -3,31 +3,8 @@ import './item.css';
 
 export default class Item extends Component {
 
-  state = {
-    done: false,
-    important: false,
-  };
-
-  importantHandler = () => {
-    this.setState(({important}) => {
-      return {
-        important: !important,
-      };
-    });
-  };
-
-  doneHandler = () => {
-    this.setState(({done}) => {
-      return {
-        done: !done,
-      };
-    });
-  };
-
-
   render() {
-    const {label, onDeleted} = this.props;
-    const {done, important} = this.state;
+    const {label, onDeleted, toggleDone, toggleImportant, done, important} = this.props;
     let classNames = 'todo-list-item';
     if (done) {
       classNames += ' itemDone';
@@ -40,12 +17,12 @@ export default class Item extends Component {
       <div className="todo-item-container">
         <span
           className={classNames}
-          onClick={this.doneHandler}>
+          onClick={toggleDone}>
           {label}
         </span>
         <button
           className="btn btn-sm float-right"
-          onClick={this.importantHandler}>
+          onClick={toggleImportant}>
           <i className="material-icons todo-icon-priority">priority_high</i>
         </button>
         <button

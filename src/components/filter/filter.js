@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './filter.css';
 
-export default class Filter extends Component {
+class Filter extends Component {
   render() {
     return (
       <div className="btn-group">
@@ -12,3 +12,5 @@ export default class Filter extends Component {
     );
   }
 }
+
+export default Filter;
