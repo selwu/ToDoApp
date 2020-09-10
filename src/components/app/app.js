@@ -58,35 +58,34 @@ export default class App extends Component {
     });
   };
 
+  togglePattern(arr, id, propName) {
+    const idNum = arr.findIndex((item) => item.id === id);
+    const oldItem = arr[idNum];
+    const newItem = {...oldItem, [propName]: !oldItem[propName]};
+    const newArr = [...arr.slice(0, idNum), newItem, ...arr.slice(idNum + 1)];
+
+    return {
+      dataArr: newArr,
+    };
+  }
+
   toggleDone = (id) => {
     this.setState(({dataArr}) => {
-      const idNum = dataArr.findIndex((item) => item.id === id);
-      const oldItem = dataArr[idNum];
-      const newItem = {...oldItem, done: !oldItem.done};
-      const newArr = [...dataArr.slice(0, idNum), newItem, ...dataArr.slice(idNum + 1)];
-
-      return {
-        dataArr: newArr,
-      };
+      return this.togglePattern(dataArr, id, 'done');
     });
   };
 
   toggleImportant = (id) => {
     this.setState(({dataArr}) => {
-      const idNum = dataArr.findIndex((item) => item.id === id);
-      const oldItem = dataArr[idNum];
-      const newItem = {...oldItem, important: !oldItem.important};
-      const newArr = [...dataArr.slice(0, idNum), newItem, ...dataArr.slice(idNum + 1)];
+      return this.togglePattern(dataArr, id, 'important');
 
-      return {
-        dataArr: newArr,
-      };
     });
   };
 
   render() {
-    const countDone = this.state.dataArr.filter((item) => item.done).length;
-    const countMore = this.state.dataArr.length - countDone;
+    const {dataArr} = this.state;
+    const countDone = dataArr.filter((item) => item.done).length;
+    const countMore = dataArr.length - countDone;
     return (
       <div className="todo-app">
         <Header done={countDone} todo={countMore}/>
@@ -95,7 +94,7 @@ export default class App extends Component {
           <Filter/>
         </div>
         <List
-          dataArr={this.state.dataArr}
+          dataArr={dataArr}
           onDeleted={this.deleteId}
           toggleDone={this.toggleDone}
           toggleImportant={this.toggleImportant}
