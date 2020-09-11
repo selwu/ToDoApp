@@ -1,4 +1,7 @@
 .button-add {
-  display: block;
-  margin: 1rem auto;
+  margin-left: 3px;
+}
+
+.item-add-form {
+  margin: 1rem 0;
 }
