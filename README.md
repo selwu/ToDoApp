@@ -1,4 +1,0 @@
-
-# todo aplication
-
-## тренировка React
