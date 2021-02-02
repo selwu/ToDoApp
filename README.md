@@ -1,4 +1,4 @@
 
 # todo aplication
 
-## тренировка React
+## https://selwu.github.io/todo/
